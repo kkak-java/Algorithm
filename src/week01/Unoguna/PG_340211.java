@@ -1,4 +1,5 @@
 package week01.Unoguna;
+import java.util.*;
 
 public class PG_340211 {
 
@@ -41,7 +42,7 @@ public class PG_340211 {
             int answer = 0;
             int end_num = 0;    //최종 목적지까지 도착이 완료된 로봇의 개수
 
-            int[][] matrix = new int[101][101]; //해당 위치의 로봇의 개수를 표시하기위한 배열 생성 전체 가로, 세로의 최대 길이가 100이라 101로 할당
+            //int[][] matrix = new int[101][101]; //해당 위치의 로봇의 개수를 표시하기위한 배열 생성 전체 가로, 세로의 최대 길이가 100이라 101로 할당
 
             Robot[] robot = new Robot[routes.length];
 
@@ -56,23 +57,35 @@ public class PG_340211 {
             //로봇 이동 및 충돌횟수 체크
             while(end_num < routes.length){ //모든 로봇이 최종 목적지에 도착하면 종료
                 //현재 로봇들의 위치를 matrix에 반영 matrix는 (x,y)좌표에 있는 로봇의 개수를 갖게됨
+
+                ArrayList<String> arr = new ArrayList<>();  //로봇이 한개 이상인 좌표
+                ArrayList<String> dup = new ArrayList<>();  //로봇이 두개 이상인 좌표
+
                 for(int i=0; i<robot.length; i++){
                     if(robot[i].end) continue; //최종 목적지까지 도착한 로봇은 계속 그 위치에 있는게 아니라 제거해야하기 때문에 도착한 경우 matrix에 반영하지 않는다.
 
                     int x = robot[i].x;
                     int y = robot[i].y;
 
-                    matrix[y][x]++;
+                    String tmp = Integer.toString(x) +" " +  Integer.toString(y);
+
+                    if(!dup.contains(tmp) && arr.contains(tmp)){
+                        dup.add(tmp);
+                        answer++;
+                    }
+                    else if(!arr.contains(tmp)) arr.add(tmp);
                 }
 
                 //count 체크
                 //matrix의 크기가 최대 100*100이고 while문의 최대 loop횟수가 200이라 시간복잡도에 크게 지장이 없다고 생각하여 이중 for문으로 구현
-                for(int i=0; i<matrix.length; i++){
-                    for(int j=0; j<matrix.length; j++){
-                        if(matrix[j][i] > 1) answer++;  //해당위치에 로봇의 개수가 2개이상일 경우 충돌이 발생
-                        matrix[j][i] = 0;   //해당위치 확인후 초기화 시켜준다.
-                    }
-                }
+//                for(int i=0; i<matrix.length; i++){
+//                    for(int j=0; j<matrix.length; j++){
+//                        if(matrix[j][i] > 1) answer++;  //해당위치에 로봇의 개수가 2개이상일 경우 충돌이 발생
+//                        matrix[j][i] = 0;   //해당위치 확인후 초기화 시켜준다.
+//                    }
+//                }
+
+                //string을 통해서 체크하는 방법
 
                 //로봇들을 다음 이동할 위치로 이동
                 for(int i=0; i<robot.length; i++){
