@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-class Solution {
+class PG_17681 {
     public int solution(String dartResult) {
         int answer = 0;
         ArrayList<Integer> scores = new ArrayList<>(); //최종 점수 3개를 저장하는 배열
