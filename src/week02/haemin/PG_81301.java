@@ -6,7 +6,7 @@ class Solution {
     
     private static HashMap<String, String> map = new HashMap<>();
     
-    public int solution(String s) {
+    public int solution1(String s) {
         // map 구성
         map.put("zero", "0");
         map.put("one", "1");
