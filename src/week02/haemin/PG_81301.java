@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-# 1
+// 1
 class Solution {
     
     private static HashMap<String, String> map = new HashMap<>();
@@ -27,8 +27,8 @@ class Solution {
     }
 }
 
-# 2
-class Solution {
+// 2
+class Solution2 {
     public int solution(String s) {
         String[] strArr = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
         for(int i = 0; i < strArr.length; i++) {
