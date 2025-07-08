@@ -1,6 +1,8 @@
+package week02.haemin;
+
 import java.util.HashMap;
 import java.util.*;
-package week02.haemin;
+
 // 1
 class Solution {
     
