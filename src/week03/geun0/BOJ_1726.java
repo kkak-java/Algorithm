@@ -20,6 +20,8 @@ public class BOJ_1726 {
     static boolean[][][] visit;
     static int[] dx = {0, 0, 1, -1}; //동서남북
     static int[] dy = {1, -1, 0, 0}; //동서남북
+    static int[] turnLeft = {3, 2, 0, 1};
+    static int[] turnRight = {2, 3, 1, 0};
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -91,38 +93,18 @@ public class BOJ_1726 {
             }
 
             //명령 2 - 왼쪽 90도 회전
-            int left = turnLeft(dir);
+            int left = turnLeft[dir];
             if (!visit[x][y][left]) {
                 visit[x][y][left] = true;
                 qu.offer(new int[]{x, y, left, count + 1});
             }
 
             //명령 2 - 오른쪽 90도 회전
-            int right = turnRight(dir);
+            int right = turnRight[dir];
             if (!visit[x][y][right]) {
                 visit[x][y][right] = true;
                 qu.offer(new int[]{x, y, right, count + 1});
             }
         }
-    }
-
-    private static int turnLeft(int dir) {
-        switch (dir) {
-            case 0: return 3;
-            case 1: return 2;
-            case 2: return 0;
-            case 3: return 1;
-        }
-        return -1;
-    }
-
-    private static int turnRight(int dir) {
-        switch (dir) {
-            case 0: return 2;
-            case 1: return 3;
-            case 2: return 1;
-            case 3: return 0;
-        }
-        return -1;
     }
 }
