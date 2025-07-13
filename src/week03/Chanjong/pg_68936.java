@@ -1,5 +1,5 @@
-class Solution {
-    public int[] solutionWeek3C(int[][] arr) {
+class  solutionWeek3C{
+    public int[] Solution(int[][] arr) {
         return quadtree(arr, 0, 0, arr[0].length);
     }
     
